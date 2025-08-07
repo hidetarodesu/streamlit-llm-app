@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-openai_api_key = os.environ("OPENAI_API_KEY")
+openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 llm = ChatOpenAI(
     model="gpt-4o-mini",
