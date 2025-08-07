@@ -6,9 +6,12 @@ load_dotenv()
 
 from langchain_openai import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage
+
+openai_api_key = os.environ.get("OPENAI_API_KEY")
+
 llm = ChatOpenAI(
     model="gpt-4o",
-    temperature=0.5,openai_api_key=st.secrets["OPENAI_API_KEY"]
+    temperature=0.5, openai_api_key=openai_api_key
 )
 
 
