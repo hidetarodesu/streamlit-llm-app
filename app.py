@@ -19,11 +19,19 @@ else:
     load_dotenv()
     openai_api_key = os.environ.get("OPENAI_API_KEY")
 
-llm = ChatOpenAI(
-    model="gpt-4o-mini",
-    temperature=0.5,
-    openai_api_key=openai_api_key
+# --- ここから修正 ---
+# APIキーが取得できた場合のみLLMを初期化する
+if openai_api_key:
+    llm = ChatOpenAI(
+        model="gpt-4o-mini",
+        temperature=0.5,
+        openai_api_key=openai_api_key
     )
+else:
+    # APIキーが設定されていない場合はエラーメッセージを表示して停止
+    st.error("APIキーが設定されていません。Streamlit CloudのSecretsまたはローカルの.envファイルを確認してください。")
+    st.stop()
+# --- 修正ここまで ---
 
 
 
