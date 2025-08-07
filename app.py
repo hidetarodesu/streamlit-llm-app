@@ -3,10 +3,15 @@ import streamlit as st
 from langchain_openai import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 llm = ChatOpenAI(
-    model="gpt-4o",
-    temperature=0.5, openai_api_key=st.secrets["OPENAI_API_KEY"]
-)
+    model="gpt-4o-mini",
+    temperature=0.5
+    )
 
 
 st.title("専門家呼び出しアプリ")
