@@ -1,3 +1,5 @@
+import streamlit as st
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -10,8 +12,6 @@ llm = ChatOpenAI(
 )
 
 
-
-import streamlit as st
 st.title("専門家呼び出しアプリ")
 st.write("このアプリは、専門家の知識を活用して質問に答えることを目的としています。")
 st.write("以下質問したい専門家を選択してください。")
