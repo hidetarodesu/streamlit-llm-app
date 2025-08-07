@@ -6,13 +6,23 @@ from langchain.schema import SystemMessage, HumanMessage
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
 
-openai_api_key = os.environ.get("OPENAI_API_KEY")
+# APIキーを安全に読み込むための処理
+openai_api_key = None
+
+# Streamlit Cloudで実行されているかを判定
+# 'OPENAI_API_KEY'がst.secretsに存在するか確認する
+if 'OPENAI_API_KEY' in st.secrets:
+    openai_api_key = st.secrets['OPENAI_API_KEY']
+else:
+    # ローカル環境の場合、.envファイルを読み込む
+    load_dotenv()
+    openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 llm = ChatOpenAI(
     model="gpt-4o-mini",
-    temperature=0.5
+    temperature=0.5,
+    openai_api_key=openai_api_key
     )
 
 
