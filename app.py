@@ -8,10 +8,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+openai_api_key = os.environ("OPENAI_API_KEY")
+
 llm = ChatOpenAI(
     model="gpt-4o-mini",
     temperature=0.5
     )
+
 
 
 st.title("専門家呼び出しアプリ")
