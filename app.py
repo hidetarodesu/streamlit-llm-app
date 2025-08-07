@@ -6,7 +6,7 @@ from langchain_openai import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage
 llm = ChatOpenAI(
     model="gpt-4o",
-    temperature=0.5,
+    temperature=0.5,openai_api_key=st.secrets["OPENAI_API_KEY"]
 )
 
 
